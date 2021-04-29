@@ -1,0 +1,24 @@
+services:
+  gateway:
+    image: openresty/openresty:1.19.3.1-bionic
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./test-module/conf:/usr/local/openresty/nginx/conf
+      - ./test-module/lua:/usr/local/openresty/nginx/lua
+  mongo:
+    image: mongo:4
+  app1:
+    build: ./app
+    environment: 
+      APP_NAME: 'The Microservice'
+    ports:
+      - 3001:3000
+  app2:
+    build: ./app
+    environment: 
+        APP_NAME: 'The Monolith'
+    ports:
+      - 3002:3000
+    
