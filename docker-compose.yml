@@ -21,6 +21,6 @@ services:
   app2:
     build: ./app
     environment: 
-        APP_NAME: 'The Monolith'
+      APP_NAME: 'The Monolith'
     ports:
       - 3002:3000
